@@ -96,6 +96,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('edit/{id}', 'UserController@update')->name('admin.user.update');
     });
 
+    Route::get('/admin/user/del/{id}', [UserController::class, 'destroy'])->name('admin.user.delete');
+
     //Admin manage cabinet
 
     Route::group(['prefix' => 'cabinet', 'middleware' => 'AdminMiddleware'], function () {
@@ -206,11 +208,16 @@ Route::group(['prefix' => 'wallet', 'middleware' => 'UserMiddleware'], function 
     Route::get('saveChargeWallet/{username}', 'WalletController@saveChargeWallet')->name('user.saveChargeWallet');
 });
 
+Route::get('/wallet/approve/{id}', [WalletController::class, 'approveCharge'])->name('wallet.approveCharge');
+Route::get('/wallet/reject/{id}', [WalletController::class, 'rejectCharge'])->name('wallet.rejectCharge');
+
 ///Buy movie
 
 Route::group(['prefix' => 'payment', 'middleware' => 'UserMiddleware'], function () {
     Route::get('buy/{movie_id}', 'PaymentController@buyMovie')->name('user.buyMovie');
 });
+
+Route::get('/buy-movie/{movie_id}', [PaymentController::class, 'buyMovie'])->name('movie.buy');
 
 ///Reject All
 

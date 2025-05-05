@@ -23,64 +23,62 @@
                 <div class="container">
                     <div class="browse-inner">
                         @if ($payment->isEmpty())
-                            <h3 class="text-center">Bạn chưa mua phim nào!</h3><br>
-                        @else
-                        <h3 class="text-center">Bạn đã mua "<b>{{ count($payment) }}</b>" phim</h3><br>
-                        @foreach ($movie as $item)
-                            @foreach ($payment as $item2)
-                                @if ($item2->movie_id==$item->id)
-                                <div class="col-md-2 w3l-movie-gride-agile">
-                                    <a href="{{route('user.movie',$item->id)}}"
-                                        title="{{$item->vie_name.' ('.$item->eng_name.')'}}"
-                                        class="hvr-shutter-out-horizontal"><img
-                                            src="{{ asset('storage/poster/'.$item->poster_image) }}"
-                                            title="{{$item->vie_name.' ('.$item->eng_name.')'}}" class="img-responsive"
-                                            alt=" " />
-                                        <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-                                    </a>
-                                    <div class="mid-1">
-                                        <div class="w3l-movie-text">
-                                            <h6><a href="{{route('user.movie',$item->id)}}"
-                                                    title="{{$item->vie_name.' ('.$item->eng_name.')'}}">{{$item->vie_name}}</a>
-                                            </h6>
-                                        </div>
-                                        <div class="mid-2">
-                                            <p>
-                                                @foreach ($year as $item2)
-                                                @if ($item2->id==$item->year_id)
-                                                {{$item2->year}}
-                                                @endif
-                                                @endforeach
-                                            </p>
-                                            <div class="block-stars">
-                                                <ul class="w3l-ratings">
-                                                    <p>{{ $item->time }}</p>
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ribben">
-                                        @foreach ($language as $lang)
-                                        @if ($item->language_id==$lang->id)
-                                        <a href="{{route('user.movie',$item->id)}}"
-                                            title="{{$item->vie_name.' ('.$item->eng_name.')'}}">
-                                            <p>{{$item->quality.'-'.$lang->language}}</p>
-                                        </a>
-                                        @endif
-                                        @endforeach
-                                    </div>
-                                    <div class="ribbennew3">
-                                        <span
-                                            class="badge badge-pill badge-danger price2 text-center" style="margin-top:5px;">
-                                            {{ number_format(round($item->price)).'đ' }}
-                                        </span>
-                                    </div>
-                                </div>
-                                @endif
-                            @endforeach
+    <h3 class="text-center">Bạn chưa mua phim nào!</h3><br>
+@else
+    <h3 class="text-center">Bạn đã mua "<b>{{ count($payment) }}</b>" phim</h3><br>
+        @foreach ($movie as $item)
+            @foreach ($payment as $item2)
+                @if ($item2->movie_id == $item->id)
+                    <div class="col-md-2 w3l-movie-gride-agile">
+                        <a href="{{ route('user.movie', $item->id) }}"
+                            title="{{ $item->vie_name . ' (' . $item->eng_name . ')' }}"
+                            class="hvr-shutter-out-horizontal">
+                            <img src="{{ asset('storage/poster/' . $item->poster_image) }}"
+                            title="{{ $item->vie_name . ' (' . $item->eng_name . ')' }}" class="img-responsive" alt=" " />
+                        <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+                        </a>
+                    <div class="mid-1">
+                        <div class="w3l-movie-text">
+                            <h6><a href="{{ route('user.movie', $item->id) }}"
+                                    title="{{ $item->vie_name . ' (' . $item->eng_name . ')' }}">{{ $item->vie_name }}</a>
+                            </h6>
+                        </div>
+                        <div class="mid-2">
+                            <p>
+                                @foreach ($year as $item2)
+                                    @if ($item2->id == $item->year_id)
+                                        {{ $item2->year }}
+                                    @endif
+                                @endforeach
+                            </p>
+                            <div class="block-stars">
+                                <ul class="w3l-ratings">
+                                    <p>{{ $item->time }}</p>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="ribben">
+                        @foreach ($language as $lang)
+                            @if ($item->language_id == $lang->id)
+                                <a href="{{ route('user.movie', $item->id) }}"
+                                    title="{{ $item->vie_name . ' (' . $item->eng_name . ')' }}">
+                                    <p>{{ $item->quality . '-' . $lang->language }}</p>
+                                </a>
+                            @endif
                         @endforeach
-                        @endif
+                    </div>
+                    <div class="ribbennew3">
+                        <span class="badge badge-pill badge-danger price2 text-center" style="margin-top:5px;">
+                            {{ number_format(round($item->price)) . 'đ' }}
+                        </span>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+    @endforeach
+@endif
 
                         <div class="clearfix"> </div>
                     </div>

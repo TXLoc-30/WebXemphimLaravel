@@ -33,9 +33,32 @@
                                 <h3>NẠP TIỀN</h3>
                                 <form action="{{ route('user.postChargeWallet') }}" method="post">
                                     @csrf
-                                    <input type="number" name="amount" value="" placeholder="Nhập số tiền bạn muốn nạp" required="" oninvalid="this.setCustomValidity('Có phải bạn có quên mất gì đó?')"
-                                    oninput="this.setCustomValidity('')">
-                                    <input type="submit" value="Nạp ngay"><br><br>
+                                    <div class="form-group">
+                                        <label for="amount">Số tiền cần nạp:</label>
+                                        <input type="number" name="amount" value="" placeholder="Nhập số tiền bạn muốn nạp" required="" 
+                                               oninvalid="this.setCustomValidity('Vui lòng nhập số tiền cần nạp!')" 
+                                               oninput="this.setCustomValidity('')">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bank_account">Thông tin tài khoản ngân hàng:</label>
+                                        <p><b>Ngân hàng:</b> TPBank</p>
+                                        <p><b>Số tài khoản:</b>0942192764</p>
+                                        <p><b>Chủ tài khoản:</b>Trần Đạt Huy </p>
+                                        <p><b>Nội dung chuyển khoản:</b> Nạp tiền {{ session('username_minmovies') }}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="transaction_id">Mã giao dịch ngân hàng:</label>
+                                        <input type="text" name="transaction_id" placeholder="Nhập mã giao dịch ngân hàng" required="" 
+                                               oninvalid="this.setCustomValidity('Vui lòng nhập mã giao dịch!')" 
+                                               oninput="this.setCustomValidity('')">
+                                    </div>
+                                    <p><b>Hướng dẫn lấy mã giao dịch:</b></p>
+                                    <ul>
+                                        <li>Sau khi chuyển khoản, kiểm tra biên lai hoặc lịch sử giao dịch trong ứng dụng ngân hàng.</li>
+                                        <li>Tìm mã giao dịch (Transaction ID) và nhập vào ô "Mã giao dịch ngân hàng".</li>
+                                        <li>Nếu không tìm thấy, liên hệ ngân hàng để được hỗ trợ.</li>
+                                    </ul>
+                                    <input type="submit" value="Xác nhận nạp tiền">
                                 </form>
                             </div>
                         </div>
