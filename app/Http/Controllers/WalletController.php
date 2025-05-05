@@ -47,17 +47,17 @@ class WalletController extends Controller
         $walletCharge->orderId = time(); // Mã đơn hàng (unique)
         $walletCharge->money = $request->amount;
         $walletCharge->transaction_id = $request->transaction_id; // Mã giao dịch ngân hàng
-        $walletCharge->status = 'approved'; // Tự động xác nhận giao dịch
+        $walletCharge->status = 'pending'; // Tự động xác nhận giao dịch
         $walletCharge->save();
 
         // Cập nhật số dư ví
-        $wallet = Wallet::where('user_id', $user->id)->first();
-        $wallet->money += $walletCharge->money;
-        $wallet->save();
+        // $wallet = Wallet::where('user_id', $user->id)->first();
+        // $wallet->money += $walletCharge->money;
+        // $wallet->save();
 
         return redirect()->route('user.getWallet')->with([
             'thongbao_level' => 'success',
-            'thongbao' => 'Nạp tiền thành công!'
+            'thongbao' => 'Yêu cầu nạp tiền thành công! Vui lòng chờ xác nhận'
         ]);
     }
 
@@ -90,7 +90,7 @@ class WalletController extends Controller
         $wallet->money += $walletCharge->money;
         $wallet->save();
 
-        $walletCharge->status = 'approved'; // Đánh dấu giao dịch đã được xác nhận
+        $walletCharge->status = 'success'; // Đánh dấu giao dịch đã được xác nhận
         $walletCharge->save();
 
         return redirect()->route('user.getWallet')->with([
