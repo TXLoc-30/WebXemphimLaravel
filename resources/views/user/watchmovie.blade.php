@@ -48,14 +48,14 @@
                 
 
                     <div class="video-responsive" id="myVideo">
-                    <iframe 
+                    <!-- <iframe 
                         src="{{ $movie->embed_link }}"
                         width="100%" 
                         height="600" 
                         frameborder="0" 
                         allowfullscreen>
-                    </iframe>
-                        <!-- @foreach ($link as $item)
+                    </iframe> -->
+                        @foreach ($link as $item)
                         @if ($item->movie_id==$movie->id)
                         @if ($server==1)
                         {!!$item->link1!!}
@@ -79,7 +79,7 @@
                         break;
                         @endphp
                         @endif
-                        @endforeach -->
+                        @endforeach
                     </div><br><br>
                     <div class="row">
                         <div class="col-md-6">
