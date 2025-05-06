@@ -5,7 +5,7 @@
             <div class="col-md-4 text-center">
                 <div class="w3layouts_logo">
                     <a href="{{ route('user.index') }}">
-                        <h1>Min<span>Movies</span></h1>
+                        <h1>9<span>Movies</span></h1>
                     </a>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div>
                     <ul class="nav pull-right">
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <h4><img src="public/user//images/hi.gif" style="padding-right: 10px;">Chào
+                                <h4><img src="user/images/hi.gif" style="padding-right: 10px;">Chào
                                     {{ Auth::user()->name }}
                                 </h4> <b class="caret"></b>
                             </a>
@@ -75,7 +75,7 @@
                 @else
                 <div class="w3l_sign_in_register">
                     <ul>
-                        <li><img src="public/user/images/hello.gif" style="padding-right: 10px; width: 50px;"><a
+                        <li><img src="user/images/hello.gif" style="padding-right: 10px; width: 50px;"><a
                                 href="#" data-toggle="modal" data-target="#myModal">Đăng Nhập</a></li>
                     </ul>
                 </div>

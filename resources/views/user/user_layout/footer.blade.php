@@ -21,7 +21,7 @@
         <div class="clearfix"> </div>
     </div>
     <div class="container text-center text-light" style="color: #FFF;">
-        <p>&copy; 2019 Min Movies. All rights reserved</p>
+        <p>&copy; 2025 Nhóm số 9</p>
     </div>
 </div>
 <!-- //footer -->
