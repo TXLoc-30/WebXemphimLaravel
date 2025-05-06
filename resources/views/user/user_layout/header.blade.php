@@ -5,7 +5,7 @@
             <div class="col-md-4 text-center">
                 <div class="w3layouts_logo">
                     <a href="{{ route('user.index') }}">
-                        <h1>9<span>Movies</span></h1>
+                        <h1>MIN<span>Movies</span></h1>
                     </a>
                 </div>
             </div>
